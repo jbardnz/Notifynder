@@ -189,6 +189,7 @@ class NotificationRepository {
             $result = $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->get()->parse();
         }
@@ -198,6 +199,7 @@ class NotificationRepository {
             $result = $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->paginate($limit);
         }
@@ -207,6 +209,7 @@ class NotificationRepository {
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
                 ->withNotRead()
                 ->limit($limit)
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->get()->parse();
         }
@@ -232,6 +235,7 @@ class NotificationRepository {
         {
             return $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->get()->parse();
         }
@@ -240,6 +244,7 @@ class NotificationRepository {
         {
             return $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->paginate($limit);
         }
@@ -247,6 +252,7 @@ class NotificationRepository {
         {
             return $this->notification->with('body','from')
                 ->wherePolymorphic('to_id','to_type',$to_id,$this->entity)
+                ->orderBy('created_at','DESC')
                 ->orderBy('read','ASC')
                 ->limit($limit)
                 ->get()->parse();
